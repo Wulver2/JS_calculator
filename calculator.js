@@ -33,4 +33,26 @@ function operate(operator, num1, num2) {
     }
 }
 
-console.log(operate("*", 5, 8));
+function generateCalculator() {
+    let calculator = document.querySelector(".calculator");
+    let operators = ["+", "-", "*", "/", "="]
+
+    for (let i = 0; i < 10; i++) {
+        let num = document.createElement("button");
+        num.className = "numbers";
+        num.textContent = i;
+        calculator.appendChild(num);
+    }
+    for (let i = 0; i < operators.length; i++) {
+        let op = document.createElement("button");
+        op.className = "operators";
+        op.textContent = operators[i];
+        calculator.appendChild(op);
+    }
+    let clear = document.createElement("button");
+    clear.className = "clear";
+    clear.textContent = "clear";
+    calculator.appendChild(clear)
+};
+
+generateCalculator();
