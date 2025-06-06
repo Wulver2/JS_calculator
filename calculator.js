@@ -1,4 +1,5 @@
 let nums = []
+let number = "";
 let op = "";
 let operators = ["+", "-", "*", "/", "="]
 
@@ -79,10 +80,12 @@ function displayCalculations(button) {
     }
     else {
         button.addEventListener("click", function() {
-            screen.textContent += button.textContent + " ";
+            screen.textContent += button.textContent;
             //once = is clicked check if correct amount of 
             // nums(2) and display answer
             if (button.textContent == "=") {
+                nums.push(Number(number));
+                number = ""
                 if(nums.length != 2) {
                     clear();
                     screen.textContent = "incorrect amount of numbers";
@@ -93,9 +96,12 @@ function displayCalculations(button) {
             }
             else if(operators.includes(button.textContent)) {
                 op = button.textContent;
+                nums.push(Number(number));
+                number = ""
             }
             else {
-                nums.push(Number(button.textContent));
+                //so numbers like 12, 500, etc can work
+                number += button.textContent;
             }
         });
     }
