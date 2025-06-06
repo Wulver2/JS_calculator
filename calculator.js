@@ -1,3 +1,7 @@
+let nums = []
+let op = "";
+let operators = ["+", "-", "*", "/", "="]
+
 function add(num1, num2) {
     //may need to add error checking for non-numbers
     return num1 + num2;
@@ -35,7 +39,6 @@ function operate(operator, num1, num2) {
 
 function generateCalculator() {
     let calculator = document.querySelector(".calculator");
-    let operators = ["+", "-", "*", "/", "="]
 
     for (let i = 0; i < 10; i++) {
         let num = document.createElement("button");
@@ -58,17 +61,42 @@ function generateCalculator() {
     calculator.appendChild(clear)
 };
 
+function clear() {
+    screen.textContent = "";
+    nums = [];
+    op = "";
+}
+
 function displayCalculations(button) {
     let screen = document.querySelector(".calculation");
     //most likely need special eventlistner of "=" operator
     if (button.textContent == "clear") {
         button.addEventListener("click", function() {
             screen.textContent = "";
+            nums = [];
+            op = "";
         });
     }
     else {
         button.addEventListener("click", function() {
-            screen.textContent += button.textContent;
+            screen.textContent += button.textContent + " ";
+            //once = is clicked check if correct amount of 
+            // nums(2) and display answer
+            if (button.textContent == "=") {
+                if(nums.length != 2) {
+                    clear();
+                    screen.textContent = "incorrect amount of numbers";
+                }
+                else {
+                    screen.textContent += operate(op, nums[0], nums[1]);
+                }
+            }
+            else if(operators.includes(button.textContent)) {
+                op = button.textContent;
+            }
+            else {
+                nums.push(Number(button.textContent));
+            }
         });
     }
 };
