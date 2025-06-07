@@ -1,8 +1,45 @@
 body {
     text-align: center;
+    background-color: antiquewhite;
 }
 
 button {
     width: 100px;
     height: 100px;
+}
+.container {
+    background-color: rgb(69, 64, 64);
+    width: 400px;
+    margin: auto;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    border-radius: 10px;
+} 
+.container .calculator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 400px;
+    margin: auto;
+}
+.container .screen {
+    background: rgb(156, 164, 209);
+    border-radius: 20px;
+    width: 90%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.calculation {
+
+}
+
+.clear {
+    background-color: rgb(127, 23, 23);
+    color: white;
 }
